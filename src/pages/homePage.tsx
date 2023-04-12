@@ -2,7 +2,7 @@
 // Importing Part
 
 // Exporting functional component as default
-export default function HomePage(){
+export default function HomePage():JSX.Element{
     // Returning JSX
     return(
         <div>
