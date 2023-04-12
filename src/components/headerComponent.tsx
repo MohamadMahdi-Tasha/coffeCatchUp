@@ -10,7 +10,7 @@ import Logo from './../assets/img/img-logo.png';
 export default function HeaderComponent():JSX.Element{
     // Returning JSX
     return(
-        <header className={'border-b border-b-slate-500/30'}>
+        <header className={'border-b border-b-slate-500/30 bg-white/30 backdrop-blur-sm fixed top-0 w-full'}>
             <ContainerComponent className={'p-3 flex items-center justify-between'}>
                 <button className={'w-8 h-8 flex items-center justify-center text-black rounded-full'}><IconComponent type={'hamburger'}/></button>
                 <Link to={'/'}><img className={'w-10 h-10'} src={Logo} alt="Coffee CatchUp Logo"/></Link>
