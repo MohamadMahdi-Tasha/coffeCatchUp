@@ -3,3 +3,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*Styles*/
+.home-page__articles-list > .home-page__articles-item:first-of-type > .home-page__articles-link {@apply border-t;}
+.home-page__articles-list > .home-page__articles-item:not(:first-of-type, :last-of-type) > .home-page__articles-link {@apply border-y;}
+.home-page__articles-list > .home-page__articles-item:last-of-type > .home-page__articles-link {@apply border-b;}

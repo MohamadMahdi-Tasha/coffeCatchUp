@@ -6,7 +6,7 @@ interface typeInterface {
 }
 
 // Exporting functional component as default
-export default function ContainerComponent({children,className}:typeInterface){
+export default function ContainerComponent({children,className}:typeInterface):JSX.Element{
     // Returning JSX
     return(
         <div className={
