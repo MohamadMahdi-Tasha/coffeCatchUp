@@ -14,8 +14,8 @@ const root:ReactDOM.Root = ReactDOM.createRoot(rootElement);
 // Rendering Whole App Into StickMode Wrapper And Rendering That Inside In Root We Created Above
 root.render(
     <React.StrictMode>
-        <HeaderComponent />
         <BrowserRouter>
+            <HeaderComponent />
             <Routes>
                 <Route path={'/'} element={<HomePage />}/>
             </Routes>
