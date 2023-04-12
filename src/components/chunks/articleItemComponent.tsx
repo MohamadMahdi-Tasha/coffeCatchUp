@@ -11,6 +11,21 @@ interface articleItemPropsType {
 
 // Exporting functional component as default
 export default function ArticleItemComponent({img, date}: articleItemPropsType){
+    // Variables
+    const selectedDate:Date = new Date(date);
+    const monthOfSelectedDate:number = selectedDate.getMonth();
+    const yearOfSelectedDate:number = selectedDate.getFullYear();
+    const dayOfSelectedDate:number = selectedDate.getDate();
+    let season;
+
+    // A Condition To Find Season
+    switch (monthOfSelectedDate) {
+        case 11 || 12 || 1: season = 'Spring';break;
+        case 2 || 3 || 4: season = 'Summer';break;
+        case 5 || 6 || 7: season = 'Autumn';break;
+        case 8 || 9 || 10: season = 'Winter';break;
+    }
+
     // Returning JSX
     return(
         <li className={'home-page__articles-item'}>
@@ -19,14 +34,13 @@ export default function ArticleItemComponent({img, date}: articleItemPropsType){
                     <div>
                         <MyProfileInArticleComponent date={date}/>
                         <div>
-                            <h1 className={'text-lg text-black font-bold mb-2'}>10th Day Of Summer Of 2023</h1>
+                            <h1 className={'text-lg text-black font-semibold mb-2'}>
+                                {dayOfSelectedDate} Day Of {monthOfSelectedDate} Month In {season} Of {yearOfSelectedDate}
+                            </h1>
                             <p className={'font-light text-black/30 mb-4'}>Click To See Report Of This Day!</p>
                             <div className={'flex flex-wrap gap-4'}>
-                                <DaysTypeButtonComponent type='lazy' />
-                                <DaysTypeButtonComponent type='productive' />
-                                <DaysTypeButtonComponent type='learned' />
-                                <DaysTypeButtonComponent type='vacation' />
-                                <DaysTypeButtonComponent type='family' />
+                                <DaysTypeButtonComponent isInArticleItem={true} type='productive' />
+                                <DaysTypeButtonComponent isInArticleItem={true} type='learned' />
                             </div>
                         </div>
                     </div>

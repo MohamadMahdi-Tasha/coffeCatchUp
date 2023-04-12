@@ -11,11 +11,11 @@ export default function HomePage():JSX.Element{
         <ContainerComponent className={'mt-20 p-3'}>
             <div className={'flex flex-wrap gap-4 items-center mb-5'}>
                 <h6 className={'text-black/50 text-sm'}>My Days:</h6>
-                <DaysTypeButtonComponent type='lazy' />
-                <DaysTypeButtonComponent type='productive' />
-                <DaysTypeButtonComponent type='learned' />
-                <DaysTypeButtonComponent type='vacation' />
-                <DaysTypeButtonComponent type='family' />
+                <DaysTypeButtonComponent isInArticleItem={false} type='lazy' />
+                <DaysTypeButtonComponent isInArticleItem={false} type='productive' />
+                <DaysTypeButtonComponent isInArticleItem={false} type='learned' />
+                <DaysTypeButtonComponent isInArticleItem={false} type='vacation' />
+                <DaysTypeButtonComponent isInArticleItem={false} type='family' />
             </div>
             <div>
                 <h3 className={'text-black text-lg font-bold mb-3'}>Articles</h3>
