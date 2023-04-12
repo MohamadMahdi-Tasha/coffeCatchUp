@@ -2,6 +2,7 @@
 // Codes By Mahdi Tasha
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import './index.css';
 
 // Variables
 const rootElement:HTMLElement = document.getElementById('root') as HTMLElement;
