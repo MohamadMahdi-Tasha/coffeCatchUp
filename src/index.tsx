@@ -6,6 +6,7 @@ import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from './pages/homePage';
 import HeaderComponent from './components/headerComponent';
+import LeftSideNavComponent from "./components/leftSideNavComponent";
 
 // Variables
 const rootElement:HTMLElement = document.getElementById('root') as HTMLElement;
@@ -16,6 +17,7 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <HeaderComponent />
+            <LeftSideNavComponent isOpened={true}/>
             <Routes>
                 <Route path={'/'} element={<HomePage />}/>
             </Routes>

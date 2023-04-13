@@ -5,6 +5,7 @@ import ContainerComponent from './containerComponent';
 import IconComponent from './chunks/iconComponent';
 import Logo from './../assets/img/img-logo.png';
 import MyImageComponent from './chunks/myImageComponent';
+import LeftSideNavComponent from "./leftSideNavComponent";
 
 // Exporting functional component as default
 export default function HeaderComponent():JSX.Element{
