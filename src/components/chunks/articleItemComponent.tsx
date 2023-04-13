@@ -7,10 +7,11 @@ import DaysTypeOfArticleComponent from "./daysTypeOfArticleComponent";
 interface articleItemPropsType {
     img?: string;
     date: string;
+    types: string[];
 }
 
 // Exporting functional component as default
-export default function ArticleItemComponent({img, date}: articleItemPropsType){
+export default function ArticleItemComponent({img, date, types}: articleItemPropsType){
     // Variables
     const selectedDate:Date = new Date(date);
     const monthOfSelectedDate:number = selectedDate.getMonth();
@@ -39,8 +40,11 @@ export default function ArticleItemComponent({img, date}: articleItemPropsType){
                             </h1>
                             <p className={'font-light text-black/30 mb-4'}>Click To See Report Of This Day!</p>
                             <div className={'flex flex-wrap md:gap-4 gap-2'}>
-                                <DaysTypeOfArticleComponent type='learned' />
-                                <DaysTypeOfArticleComponent type='productive' />
+                                {
+                                    types.map((type:string, index:number) =>
+                                        <DaysTypeOfArticleComponent key={index} type={type} />
+                                    )
+                                }
                             </div>
                         </div>
                     </div>
