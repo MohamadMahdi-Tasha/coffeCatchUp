@@ -1,13 +1,28 @@
 // Codes By Mahdi Tasha
 // Importing Part
+import React, {useState, useEffect, useRef} from "react";
 import IconComponent from './iconComponent';
-import React, {ReactNode} from "react";
 
 // Defining type of props
 interface openedInterface {}
 
 // Exporting functional component as default
 export default function DatePickerComponent():JSX.Element{
+    // Variables
+    const monthNames:string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const today:Date = new Date();
+    const todayYear:number = today.getFullYear();
+    const todayMonth:number = today.getMonth();
+    const todayDate:number = today.getDate();
+    const todayMonthName:string = monthNames[todayMonth];
+
+    // Creating States
+    const [isOpened, setOpened] = useState(false);
+    const [showingMonth, setShowingMonth] = useState(todayMonthName);
+    const [showingDate, setShowingDate] = useState(todayDate);
+    const [showingYear, setShowingYear] = useState(todayYear);
+    const [isYearSelectorShowing, setYearSelectorShowing] = useState(false);
+
     // Defining type of props
     interface childrenInterface {children: React.ReactNode | string;}
     interface dayButtonInterface {
@@ -20,37 +35,55 @@ export default function DatePickerComponent():JSX.Element{
     }
 
     // Small Components Related To this Component
-    const YearButton = ({children}:childrenInterface):JSX.Element => <button className={'px-3 py-1 rounded-[40rem] text-center text-white hover:bg-white/20'}>{children}</button>;
-    const WeekButton = ({children}: childrenInterface): JSX.Element => <button className={'w-7 h-7 rounded-full text-center text-white/40'}>{children}</button>;
-    const MonthHolder = ({children, isOpened}: monthHolderInterface): JSX.Element => <div data-opened={isOpened} className={'grid w-full data-[opened="false"]:right-[-350px] data-[opened="true"]:right-0 top-0 absolute gap-3 grid-cols-7'}>{children}</div>
+    const YearButton = ({children}:childrenInterface):JSX.Element => <button onClick={():void => {
+        setShowingYear(Number(children));
+        setYearSelectorShowing(false);
+    }} className={'px-3 py-1 rounded-[40rem] text-center text-white hover:bg-white/20'}>{children}</button>;
+    const WeekButton = ({children}: childrenInterface): JSX.Element => <button className={'w-7 h-7 pointer-events-none rounded-full text-center text-white/40'}>{children}</button>;
+    const MonthHolder = ({children, isOpened}: monthHolderInterface): JSX.Element => <div data-opened={isOpened} className={'grid w-full right-0 data-[opened="false"]:translate-x-[120%] top-0 absolute gap-3 grid-cols-7'}>{children}</div>
     function DayButton({children, hasNoContent}: dayButtonInterface):JSX.Element {
+        // Creating State
+        const [isSelected, setSelected] = useState(false);
+
+        // Returning JSX
         return (
             <button
-                className={(hasNoContent) ? 'w-7 h-7' : 'w-7 h-7 rounded-full text-center text-white hover:bg-white/20 transition-all'}>
+                className={(hasNoContent) ? 'w-7 h-7 pointer-events-none' : 'btn-with-content w-7 h-7 data-[selected="true"]:bg-white/20 data-[selected="true"]:bg-white/20 rounded-full text-center text-white hover:bg-white/20 transition-all'}
+                data-selected={isSelected}
+                onClick={():void => setShowingDate(Number(children))}>
                 {children}
             </button>
         )
     }
 
-    // Returning JSX
-    return(
-        <>
-            <button className={'border border-black/40 transition-all hover:border-white active:bg-white/20 rounded-md bg-transparent text-white w-full flex p-3 justify-between items-center mb-3'}>
-                <span>--/--/--</span>
-                <IconComponent type={'calender'}/>
-            </button>
+    function BottomSide():JSX.Element {
+        // Creating Ref
+        const monthElementsHolderRef:any = useRef();
+
+        // using 'useEffect' to Set Attribute On Month To Show
+        useEffect(() => {
+            const monthElementHolder:HTMLElement = monthElementsHolderRef.current;
+            const elementToSetOpened:HTMLElement | any = monthElementHolder.querySelector(`div:nth-of-type(${todayMonth})`);
+            const dayElementToActivate:HTMLElement | any = elementToSetOpened.querySelector(`button.btn-with-content:nth-of-type(${todayDate + 3})`);
+
+            elementToSetOpened.setAttribute('data-opened', 'true');
+            dayElementToActivate.setAttribute('data-selected', 'true');
+        }, [])
+
+        // Returning JSX
+        return(
             <div className={'w-full overflow-hidden shadow backdrop-blur-md bg-black/20 p-3 rounded-md relative'}>
                 <div className={'flex items-center justify-between mb-3'}>
-                    <button className={'flex items-center gap-3 text-white px-5 h-7 hover:bg-white/20 rounded-md transition-all'}>
-                        <span>April 2023</span>
+                    <button onClick={():void => setYearSelectorShowing(true)} className={'flex items-center gap-3 text-white px-5 h-7 hover:bg-white/20 rounded-md transition-all'}>
+                        <span>{showingMonth} {showingYear}</span>
                         <IconComponent type={'chevron-down'}/>
                     </button>
                     <div className={'flex gap-3'}>
-                        <button className={'w-7 h-7 transition-all hover:bg-white/20 rounded-full flex items-center justify-center text-white'}><IconComponent type={'chevron-left'}/></button>
-                        <button className={'w-7 h-7 transition-all hover:bg-white/20 rounded-full flex items-center justify-center text-white'}><IconComponent type={'chevron-right'}/></button>
+                        <button onClick={handleClickOfPreviousMonth} className={'w-7 h-7 transition-all hover:bg-white/20 rounded-full flex items-center justify-center text-white'}><IconComponent type={'chevron-left'}/></button>
+                        <button onClick={handleClickOfNextMonth} className={'w-7 h-7 transition-all hover:bg-white/20 rounded-full flex items-center justify-center text-white'}><IconComponent type={'chevron-right'}/></button>
                     </div>
                 </div>
-                <div className={'absolute hidden backdrop-blur-lg bg-black top-0 left-0 w-full h-full overflow-auto grid grid-cols-4 gap-5'}>
+                <div data-opened={isYearSelectorShowing} className={'data-[opened="false"]:top-full data-[opened="false"]:top-0 transition-all absolute backdrop-blur-md p-3 z-20 bg-blue-600 top-0 left-0 w-full h-full overflow-auto grid grid-cols-4 gap-5'}>
                     <YearButton>1900</YearButton>
                     <YearButton>1901</YearButton>
                     <YearButton>1902</YearButton>
@@ -265,8 +298,8 @@ export default function DatePickerComponent():JSX.Element{
                         <WeekButton>T</WeekButton>
                         <WeekButton>F</WeekButton>
                     </div>
-                    <div className={'relative h-[200px]'}>
-                        <MonthHolder isOpened={true}>
+                    <div ref={monthElementsHolderRef} className={'relative h-[200px]'}>
+                        <MonthHolder isOpened={false}>
                             <DayButton>1</DayButton>
                             <DayButton>2</DayButton>
                             <DayButton>3</DayButton>
@@ -764,6 +797,46 @@ export default function DatePickerComponent():JSX.Element{
                     </div>
                 </div>
             </div>
+        );
+    }
+
+    // handling clicks
+    function handleClickOfPreviousMonth():void {
+        const monthNameToSetsIndex:number = monthNames.indexOf(showingMonth) - 1;
+        const monthNameToSet:string | undefined = monthNames[monthNameToSetsIndex];
+
+        if (monthNameToSetsIndex > 0) {
+            setShowingMonth(monthNameToSet)
+        } else {
+            if (showingYear > 1900) {
+                setShowingYear(prevState => prevState - 1)
+                setShowingMonth("December")
+            }
+        }
+    }
+
+    function handleClickOfNextMonth():void {
+        const monthNameToSetsIndex:number = monthNames.indexOf(showingMonth) + 1;
+        const monthNameToSet:string | undefined = monthNames[monthNameToSetsIndex];
+
+        if (monthNameToSetsIndex < 11) {
+            setShowingMonth(monthNameToSet)
+        } else {
+            if (showingYear < 3000) {
+                setShowingYear(prevState => prevState + 1)
+                setShowingMonth("January")
+            }
+        }
+    }
+
+    // Returning JSX
+    return(
+        <>
+            <button onClick={():void => (isOpened) ? setOpened(false) : setOpened(true)} className={'border border-black/40 transition-all hover:border-white active:bg-white/20 rounded-md bg-transparent text-white w-full flex p-3 justify-between items-center mb-3'}>
+                <span>{todayYear}/{todayDate}/{todayMonth}</span>
+                <IconComponent type={'calender'}/>
+            </button>
+            {(isOpened) ? <BottomSide /> : false}
         </>
     );
 }
