@@ -17,12 +17,12 @@ export default function MyProfileInArticleComponent({date}:myProfileInArticleCom
 
     // Returning JSX
     return(
-        <div className={'flex items-center mb-3'}>
+        <div className={'md:flex block items-center mb-3'}>
             <MyImageComponent />
-            <div className={'ml-3'}>
-                <div className={'flex items-center'}>
+            <div className={'md:ml-3 ml-0 md:mt-0 mt-3'}>
+                <div className={'md:flex block items-center md:mb-0 mb-2'}>
                     <h6 className={'font-bold text-black text-sm'}>Mahdi Tasha</h6>
-                    <h6 className={'mx-2 font-light text-black/50'}>.</h6>
+                    <h6 className={'mx-2 font-light text-black/50 md:block hidden'}>.</h6>
                     <h6 className={'text-black/50 font-light text-sm'}><time dateTime={date}>{yearOfSelectedDate}/{dayOfSelectedDate}/{monthOfSelectedDate}</time></h6>
                 </div>
                 <h6 className={'text-sm text-black/50 font-light'}>Junior Front End Dev</h6>

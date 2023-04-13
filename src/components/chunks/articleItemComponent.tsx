@@ -30,7 +30,7 @@ export default function ArticleItemComponent({img, date}: articleItemPropsType){
     return(
         <li className={'home-page__articles-item'}>
             <a className={'block home-page__articles-link border-black/30'} href="#">
-                <article className={'py-5 flex items-center gap-5 justify-between'}>
+                <article className={'py-5 flex md:flex-row flex-col-reverse md:items-center items-start gap-5 justify-between'}>
                     <div>
                         <MyProfileInArticleComponent date={date}/>
                         <div>
@@ -38,13 +38,13 @@ export default function ArticleItemComponent({img, date}: articleItemPropsType){
                                 {dayOfSelectedDate} Day Of {monthOfSelectedDate} Month In {season} Of {yearOfSelectedDate}
                             </h1>
                             <p className={'font-light text-black/30 mb-4'}>Click To See Report Of This Day!</p>
-                            <div className={'flex flex-wrap gap-4'}>
+                            <div className={'flex flex-wrap md:gap-4 gap-2'}>
                                 <DaysTypeButtonComponent isInArticleItem={true} type='productive' />
                                 <DaysTypeButtonComponent isInArticleItem={true} type='learned' />
                             </div>
                         </div>
                     </div>
-                    <div className={'w-[300px] h-[125px] bg-indigo-600 rounded-lg'}></div>
+                    <div className={'md:w-[300px] w-full h-[125px] bg-indigo-600 rounded-lg'}></div>
                 </article>
             </a>
         </li>

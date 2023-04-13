@@ -9,7 +9,7 @@ export default function HomePage():JSX.Element{
     // Returning JSX
     return(
         <ContainerComponent className={'mt-20 p-3'}>
-            <div className={'flex flex-wrap gap-4 items-center mb-5'}>
+            <div className={'flex flex-wrap md:gap-4 gap-2 items-center mb-5'}>
                 <h6 className={'text-black/50 text-sm'}>My Days:</h6>
                 <DaysTypeButtonComponent isInArticleItem={false} type='lazy' />
                 <DaysTypeButtonComponent isInArticleItem={false} type='productive' />
