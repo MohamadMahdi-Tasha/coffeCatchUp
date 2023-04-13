@@ -833,7 +833,7 @@ export default function DatePickerComponent():JSX.Element{
     return(
         <>
             <button onClick={():void => (isOpened) ? setOpened(false) : setOpened(true)} className={'border border-black/40 transition-all hover:border-white active:bg-white/20 rounded-md bg-transparent text-white w-full flex p-3 justify-between items-center mb-3'}>
-                <span>{todayYear}/{todayDate}/{todayMonth}</span>
+                <span>{showingYear}/{showingDate}/{showingMonth}</span>
                 <IconComponent type={'calender'}/>
             </button>
             {(isOpened) ? <BottomSide /> : false}
