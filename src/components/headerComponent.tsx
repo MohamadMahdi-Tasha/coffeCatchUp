@@ -11,12 +11,12 @@ export default function HeaderComponent():JSX.Element{
     // Returning JSX
     return(
         <header className={'border-b border-b-black/30 bg-white/30 backdrop-blur-sm fixed top-0 w-full'}>
-            <ContainerComponent className={'p-3 flex items-center justify-between'}>
+            <ContainerComponent className={'p-3 flex items-center justify-between gap-3'}>
                 <button className={'w-8 h-8 flex items-center justify-center text-black rounded-full hover:bg-black/10 transition-colors ease-in-out border border-black/30'}><IconComponent type={'hamburger'}/></button>
-                <Link to={'/'}><img className={'w-10 h-10'} src={Logo} alt="Coffee CatchUp Logo"/></Link>
-                <div className={'flex items-center gap-8'}>
-                    <MyImageComponent />
-                    <button className={'flex font-roboto text-medium text-sm items-center gap-2 px-5 py-2 rounded-lg border border-black/30 hover:bg-black/10 transition-colors ease-in-out'}>
+                <Link className={'md:block hidden'} to={'/'}><img className={'w-10 h-10'} src={Logo} alt="Coffee CatchUp Logo"/></Link>
+                <div className={'flex items-center md:gap-8 gap-3'}>
+                    <MyImageComponent className={'sm:block hidden'}/>
+                    <button className={'flex font-roboto text-medium md:text-sm text-xs items-center gap-2 px-5 py-2 rounded-lg border border-black/30 hover:bg-black/10 transition-colors ease-in-out'}>
                         <span>+</span>
                         <span>Add</span>
                     </button>
