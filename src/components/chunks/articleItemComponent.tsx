@@ -1,7 +1,7 @@
 // Codes By Mahdi Tasha
 // Importing Part
 import MyProfileInArticleComponent from "./myProfileInArticleComponent";
-import DaysTypeButtonComponent from "./daysTypeButtonComponent";
+import DaysTypeOfArticleComponent from "./daysTypeOfArticleComponent";
 
 // Defining type of props
 interface articleItemPropsType {
@@ -39,8 +39,8 @@ export default function ArticleItemComponent({img, date}: articleItemPropsType){
                             </h1>
                             <p className={'font-light text-black/30 mb-4'}>Click To See Report Of This Day!</p>
                             <div className={'flex flex-wrap md:gap-4 gap-2'}>
-                                <DaysTypeButtonComponent isInArticleItem={true} type='productive' />
-                                <DaysTypeButtonComponent isInArticleItem={true} type='learned' />
+                                <DaysTypeOfArticleComponent type='learned' />
+                                <DaysTypeOfArticleComponent type='productive' />
                             </div>
                         </div>
                     </div>
