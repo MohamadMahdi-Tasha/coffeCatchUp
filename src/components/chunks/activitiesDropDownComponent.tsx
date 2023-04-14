@@ -2,6 +2,7 @@
 // Importing part
 import React, { useState, useEffect } from "react";
 import DaysTypeButtonWithoutSelectingComponent from './daysTypeButtonWithoutSelectingComponent';
+import DaysTypeTextWithoutSelectingComponent from './daysTypeTextWithoutSelectingComponent';
 
 // Defining type of props
 interface placeHolderType {placeHolder: string}
@@ -40,7 +41,7 @@ export default function ActivitiesDropDownComponent({placeHolder}:placeHolderTyp
             <div onClick={() => (isOpened) ? setOpened(false) : setOpened(true)} className={`block cursor-pointer border-2 ${(isOpened) ? 'border-indigo-300': 'border-black/20' } outline-0 ${(isOpened) ? 'bg-indigo-300': 'bg-black/20'} focus:bg-indigo-300 focus:border-indigo-300 text-black/60 font-roboto text-black w-full p-3 h-[62px] overflow-auto rounded-md mb-4 text-start font-normal text-sm my-transition flex flex-wrap gap-3`}>
                 {
                     (isTypesSelected)
-                        ? selectedTypes.map((type:string,index:number):any => <DaysTypeButtonWithoutSelectingComponent key={index} span notFocusable type={type}/>)
+                        ? selectedTypes.map((type:string,index:number):any => <DaysTypeTextWithoutSelectingComponent key={index} type={type}/>)
                         : placeHolder
                 }
             </div>
