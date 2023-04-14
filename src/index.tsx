@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from './pages/homePage';
+import BlogPage from './pages/blogPage';
 import HeaderHolderComponent from "./components/headerHolderComponent";
 
 // Variables
@@ -18,6 +19,8 @@ root.render(
             <HeaderHolderComponent />
             <Routes>
                 <Route path={'/'} element={<HomePage />}/>
+                <Route path={'/blogs/:encodedDate'} element={<BlogPage />}/>
+                <Route path={'*'} element={<h1>nothing found</h1>} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>

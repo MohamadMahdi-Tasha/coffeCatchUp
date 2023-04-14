@@ -2,6 +2,7 @@
 // Importing Part
 import MyProfileInArticleComponent from "./myProfileInArticleComponent";
 import DaysTypeOfArticleComponent from "./daysTypeOfArticleComponent";
+import {Link} from "react-router-dom";
 
 // Defining type of props
 interface articleItemPropsType {
@@ -30,7 +31,7 @@ export default function ArticleItemComponent({img, date, types}: articleItemProp
     // Returning JSX
     return(
         <li className={'home-page__articles-item'}>
-            <a className={'block home-page__articles-link border-black/30'} href="#">
+            <Link className={'block home-page__articles-link border-black/30'} to={`/blogs/${btoa(date)}`}>
                 <article className={'py-5 flex md:flex-row flex-col-reverse md:items-center items-start gap-5 justify-between'}>
                     <div>
                         <MyProfileInArticleComponent date={date}/>
@@ -50,7 +51,7 @@ export default function ArticleItemComponent({img, date, types}: articleItemProp
                     </div>
                     <div className={'md:w-[300px] w-full h-[125px] bg-indigo-600 rounded-lg'}></div>
                 </article>
-            </a>
+            </Link>
         </li>
     );
 }
