@@ -8,3 +8,8 @@
 .home-page__articles-list > .home-page__articles-item:first-of-type > .home-page__articles-link {@apply border-t;}
 .home-page__articles-list > .home-page__articles-item:not(:first-of-type, :last-of-type) > .home-page__articles-link {@apply border-y;}
 .home-page__articles-list > .home-page__articles-item:last-of-type > .home-page__articles-link {@apply border-b;}
+.my-transition {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .5s;
+}
