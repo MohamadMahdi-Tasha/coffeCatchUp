@@ -44,7 +44,7 @@ export default function BlogPage():JSX.Element{
                 <MyProfileInArticleComponent date={`${yearOfSelectedDate}/${dayOfSelectedDate}/${monthOfSelectedDate}`}/>
             </SectionComponent>
             <SectionComponent>
-                <div className={'flex gap-3 mb-10'}>
+                <div className={'flex md:flex-row flex-col gap-3 mb-10'}>
                     <BlogParagraphComponent firstLetterBig isHalf>
                         Lorem ipsum dolor sit amet, at iriure dolorum facilisis eum, mea ea movet partem convenire. Est et ludus placerat contentiones. Et mel delenit inimicus, graeci patrioque delicatissimi vel cu. Laudem appetere vis at, antiopam mandamus no est. Ex vix facete vocent commune, erant suscipit deserunt vel ex. Ea soleat offendit senserit mea, id rebum inciderint intellegebat pri, ne cum posse eleifend.
                         <br/><br/>
@@ -52,7 +52,7 @@ export default function BlogPage():JSX.Element{
                         <br/><br/>
                         Iriure diceret omnesque ad per. Pri posse atomorum an, exerci laudem ex vim. Omnis volumus percipit id vel. Ei velit partem noluisse usu, his id quodsi vituperata, ne iudico dolorem nam. Per an ignota epicurei ullamcorper.
                     </BlogParagraphComponent>
-                    <div className={'w-[50%] bg-indigo-600'}></div>
+                    <div className={'md:w-[50%] w-full h-[250px] bg-indigo-600'}></div>
                 </div>
                 <BlogParagraphComponent>
                     Per sumo sententiae scripserit ut, sint epicuri comprehensam et mea. Option legimus sit ex, in quo mazim fastidii legendos. Amet sumo latine vis ex. Mei tale voluptua in, clita nonumy mea ut, sea ex sint voluptua. Vim at qualisque reprimique, qui homero dolores ad, at tation munere complectitur nec. Sea ut tantas impedit.

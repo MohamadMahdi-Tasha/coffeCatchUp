@@ -13,7 +13,7 @@ interface propsInteface {
 export default function BlogParagraphComponent({firstLetterBig, children, isHalf}:propsInteface):JSX.Element{
     // Returning JSX
     return(
-        <p className={`${(isHalf) ? 'w-[50%]' : false} ${(firstLetterBig) ? 'first-letter:text-5xl first-letter:font-extrabold' : false} text-base text-black/70 font-normal`}>
+        <p className={`${(isHalf) ? 'md:w-[50%] w-full' : false} ${(firstLetterBig) ? 'first-letter:text-5xl first-letter:font-extrabold' : false} text-base text-black/70 font-normal`}>
             {children}
         </p>
     );
