@@ -6,6 +6,10 @@ import DaysTypeTextWithoutSelectingComponent from './daysTypeTextWithoutSelectin
 
 // Defining type of props
 interface placeHolderType {placeHolder: string}
+
+// ref
+export const typesHolderRef:React.RefObject<any> = React.createRef();
+
 // Exporting functional component as default
 export default function ActivitiesDropDownComponent({placeHolder}:placeHolderType):JSX.Element{
     // Creating States
@@ -38,14 +42,23 @@ export default function ActivitiesDropDownComponent({placeHolder}:placeHolderTyp
     // Returning JSX
     return(
         <div className={'relative'}>
-            <button type={'button'} onClick={() => (isOpened) ? setOpened(false) : setOpened(true)} className={`block cursor-pointer border-2 ${(isOpened) ? 'border-indigo-300': 'border-black/20' } outline-0 ${(isOpened) ? 'bg-indigo-300': 'bg-black/20'} focus:bg-indigo-300 focus:border-indigo-300 text-black/60 font-roboto text-black w-full p-3 h-[62px] overflow-auto rounded-md mb-4 text-start font-normal text-sm my-transition flex flex-wrap gap-3`}>
+            <button
+                ref={typesHolderRef}
+                type={'button'}
+                onClick={() => (isOpened) ? setOpened(false) : setOpened(true)}
+                className={`block peer data-[errored="true"]:border-red-600 data-[errored="true"]:bg-red-600/20 data-[errored="true"]:text-red-600 cursor-pointer border-2 ${(isOpened) ? 'border-indigo-300': 'border-black/20' } outline-0 ${(isOpened) ? 'bg-indigo-300': 'bg-black/20'} focus:bg-indigo-300 focus:border-indigo-300 text-black/60 font-roboto text-black w-full p-3 h-[62px] overflow-auto rounded-md mb-4 text-start font-normal text-sm my-transition flex flex-wrap gap-3`}
+                data-errored={false}
+            >
                 {
                     (isTypesSelected)
                         ? selectedTypes.map((type:string,index:number):any => <DaysTypeTextWithoutSelectingComponent key={index} type={type}/>)
                         : placeHolder
                 }
             </button>
-            <div data-opened={isOpened} className={'absolute data-[opened="false"]:invisible outline-0 outline-white data-[opened="false"]:visible data-[opened="false"]:opacity-0 data-[opened="false"]:opacity-1 data-[opened="false"]:top-[20px] data-[opened="true"]:top-0 my-transition translate-y-[-90%] bg-white w-full bg-white shadow rounded-lg p-3 flex flex-wrap gap-3'}>
+            <h6 className={'peer-data-[errored="true"]:block hidden text-sm font-bold text-red-600 mb-4'}>Please Select At Least 1 Type Of Blog</h6>
+            <div
+                data-opened={isOpened}
+                className={'absolute data-[opened="true"]:visible outline-0 outline-white data-[opened="false"]:invisible data-[opened="false"]:opacity-0 data-[opened="false"]:opacity-1 data-[opened="false"]:top-[20px] data-[opened="true"]:top-0 my-transition translate-y-[-90%] bg-white w-full bg-white shadow rounded-lg p-3 flex flex-wrap gap-3'}>
                 <DaysTypeButtonWithoutSelectingComponent onClick={handleClickOfTypeButtons} type={'lazy'}/>
                 <DaysTypeButtonWithoutSelectingComponent onClick={handleClickOfTypeButtons} type={'productive'}/>
                 <DaysTypeButtonWithoutSelectingComponent onClick={handleClickOfTypeButtons} type={'learned'}/>
