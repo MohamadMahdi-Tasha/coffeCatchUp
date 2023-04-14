@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from './pages/homePage';
-import HeaderAndLeftSideNavComponent from "./components/headerAndLeftSideNavComponent";
+import HeaderHolderComponent from "./components/headerHolderComponent";
 
 // Variables
 const rootElement:HTMLElement = document.getElementById('root') as HTMLElement;
@@ -15,7 +15,7 @@ const root:ReactDOM.Root = ReactDOM.createRoot(rootElement);
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <HeaderAndLeftSideNavComponent />
+            <HeaderHolderComponent />
             <Routes>
                 <Route path={'/'} element={<HomePage />}/>
             </Routes>
