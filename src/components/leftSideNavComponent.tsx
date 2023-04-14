@@ -6,14 +6,17 @@ import Logo from './../assets/img/img-logo.png';
 import { Link } from "react-router-dom";
 
 // Defining type of props
-interface openedInterface {isOpened: boolean}
+interface types {
+    isOpened: boolean;
+    clickOfBg: any;
+}
 
 // Exporting functional component as default
-export default function LeftSideNavComponent({isOpened}:openedInterface):JSX.Element{
+export default function LeftSideNavComponent({isOpened, clickOfBg}:types):JSX.Element{
     // Returning JSX
     return(
         <>
-            <div data-opened={isOpened} className={'absolute data-[opened="true"]:opacity-1 data-[opened="false"]:opacity-0 left-0 top-0 w-full h-full bg-black/30 backdrop-blur-md transition-all'} />
+            <div onClick={clickOfBg} data-opened={isOpened} className={'absolute data-[opened="true"]:opacity-1 data-[opened="false"]:pointer-events-none data-[opened="false"]:opacity-0 left-0 top-0 w-full h-full bg-black/30 backdrop-blur-md transition-all'} />
             <nav data-opened={isOpened} className={'absolute overflow-auto data-[opened="true"]:left-0 md:data-[opened="false"]:left-[-30%] data-[opened="false"]:-left-[-70%] top-0 md:w-[30%] w-[70%] h-full bg-indigo-600 transition-all'}>
                 <Link to={'/'} className={'bg-black flex justify-center items-center p-5'}>
                     <img src={Logo} alt="Coffe CatchUp Logo" width={'50px'} height={'50px'}/>
