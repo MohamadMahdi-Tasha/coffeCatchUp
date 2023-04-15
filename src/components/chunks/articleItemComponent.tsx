@@ -1,18 +1,18 @@
 // Codes By Mahdi Tasha
 // Importing Part
+import {Link} from "react-router-dom";
 import MyProfileInArticleComponent from "./myProfileInArticleComponent";
 import DaysTypeOfArticleComponent from "./daysTypeOfArticleComponent";
-import {Link} from "react-router-dom";
+import ArticleItemImageComponent from './ArticleItemImageComponent';
 
 // Defining type of props
 interface articleItemPropsType {
-    img?: string;
     date: string;
     types: string[];
 }
 
 // Exporting functional component as default
-export default function ArticleItemComponent({img, date, types}: articleItemPropsType){
+export default function ArticleItemComponent({date, types}: articleItemPropsType){
     // Variables
     const selectedDate:Date = new Date(date);
     const monthOfSelectedDate:number = selectedDate.getMonth();
@@ -49,7 +49,7 @@ export default function ArticleItemComponent({img, date, types}: articleItemProp
                             </div>
                         </div>
                     </div>
-                    <div className={'md:w-[300px] w-full h-[125px] bg-indigo-600 rounded-lg'}></div>
+                    <ArticleItemImageComponent />
                 </article>
             </Link>
         </li>

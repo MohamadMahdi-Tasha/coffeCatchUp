@@ -16,8 +16,8 @@ export default function LeftSideNavComponent({isOpened, closeFunction}:types):JS
     // Returning JSX
     return(
         <>
-            <div onClick={closeFunction} data-opened={isOpened} className={'fixed data-[opened="true"]:opacity-1 data-[opened="false"]:pointer-events-none data-[opened="false"]:opacity-0 left-0 top-0 w-full h-full bg-black/30 backdrop-blur-md my-transition'} />
-            <nav data-opened={isOpened} className={'fixed overflow-auto data-[opened="true"]:visible data-[opened="false"]:invisible data-[opened="true"]:opacity-1 data-[opened="false"]:opacity-0 data-[opened="true"]:left-0 md:data-[opened="false"]:left-[-30%] data-[opened="false"]:-left-[-70%] top-0 md:w-[30%] w-[70%] h-full bg-white my-transition'}>
+            <div onClick={closeFunction} data-opened={isOpened} className={'fixed z-10 data-[opened="true"]:opacity-1 data-[opened="false"]:pointer-events-none data-[opened="false"]:opacity-0 left-0 top-0 w-full h-full bg-black/30 backdrop-blur-md my-transition'} />
+            <nav data-opened={isOpened} className={'fixed z-10 overflow-auto data-[opened="true"]:visible data-[opened="false"]:invisible data-[opened="true"]:opacity-1 data-[opened="false"]:opacity-0 data-[opened="true"]:left-0 md:data-[opened="false"]:left-[-30%] data-[opened="false"]:-left-[-70%] top-0 md:w-[30%] w-[70%] h-full bg-white my-transition'}>
                 <button onClick={closeFunction} className={'w-8 h-8 flex items-center justify-center text-black hover:bg-black/30 transition-all mb-3 rounded-full m-3'}><IconComponent type={'x'}/></button>
                 <Link to={'/'} className={'bg-black flex justify-center items-center p-5'}>
                     <img src={Logo} alt="Coffe CatchUp Logo" width={'50px'} height={'50px'}/>

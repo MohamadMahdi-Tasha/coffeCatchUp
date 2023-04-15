@@ -17,7 +17,7 @@ interface types {
 export default function HeaderComponent({clickOfNavToggler, clickOfAddBtn}:types):JSX.Element{
     // Returning JSX
     return(
-        <header className={'border-b border-b-black/30 bg-white/30 backdrop-blur-sm fixed top-0 w-full'}>
+        <header className={'border-b border-b-black/30 bg-white/30 backdrop-blur-sm fixed top-0 w-full z-10'}>
             <ContainerComponent className={'p-3 flex items-center justify-between gap-3'}>
                 <button onClick={clickOfNavToggler} className={'w-8 h-8 flex items-center justify-center text-black rounded-full hover:bg-black/10 transition-colors ease-in-out border border-black/30'}><IconComponent type={'hamburger'}/></button>
                 <Link className={'md:block hidden'} to={'/'}><img className={'w-10 h-10'} src={Logo} alt="Coffee CatchUp Logo"/></Link>
