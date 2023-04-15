@@ -9,6 +9,7 @@ import BlogPage from './pages/blogPage';
 import HeaderHolderComponent from "./components/headerHolderComponent";
 import { Provider } from "react-redux";
 import appState from "./store";
+import NothingFoundPage from "./pages/nothingFoundPage";
 
 // Variables
 const rootElement:HTMLElement = document.getElementById('root') as HTMLElement;
@@ -23,7 +24,7 @@ root.render(
                 <Routes>
                     <Route path={'/'} element={<HomePage />}/>
                     <Route path={'/blogs/:encodedDate'} element={<BlogPage />}/>
-                    <Route path={'*'} element={<h1>nothing found</h1>} />
+                    <Route path={'*'} element={<NothingFoundPage />} />
                 </Routes>
             </BrowserRouter>
         </Provider>
