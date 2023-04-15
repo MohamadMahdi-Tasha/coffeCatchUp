@@ -3,6 +3,7 @@
 import ContainerComponent from "../components/containerComponent";
 import DaysTypeButtonComponent from "../components/chunks/daysTypeButtonComponent";
 import ArticleItemComponent from "../components/chunks/articleItemComponent";
+import ArticleItemsHolderComponent from '../components/chunks/articleItemsHolderComponent';
 
 // Exporting functional component as default
 export default function HomePage():JSX.Element{
@@ -19,9 +20,9 @@ export default function HomePage():JSX.Element{
             </div>
             <div>
                 <h3 className={'text-black text-lg font-bold mb-3'}>Articles</h3>
-                <ul className={'home-page__articles-list'}>
+                <ArticleItemsHolderComponent>
                     <ArticleItemComponent img={'https://bsmedia.business-standard.com/_media/bs/img/article/2020-11/06/full/1604653132-6606.jpg'} types={['productive', 'family', 'learned']} date={'2023/12/6'}/>
-                </ul>
+                </ArticleItemsHolderComponent>
             </div>
         </ContainerComponent>
     );
