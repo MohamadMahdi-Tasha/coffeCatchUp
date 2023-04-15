@@ -3,6 +3,8 @@
 import ActivitiesDropDownComponent, {typesHolderRef} from "./chunks/activitiesDropDownComponent";
 import TextAreaComponent, {textAreaRef} from "./chunks/textAreaComponent";
 import DialogComponent from "./chunks/dialogComponent";
+import {actionsOfAppSlice} from "../store";
+import { useSelector, useDispatch} from "react-redux";
 
 // creating types for props
 interface propsType {
@@ -12,6 +14,10 @@ interface propsType {
 
 // Exporting functional component as default
 export default function AddBlogDialogComponent({closeFunction, isOpened}:propsType):JSX.Element{
+    // Getting Redux State
+    const store = useSelector(state => state);
+    const dispatch = useDispatch();
+
     // handing submit of Form
     function handleSubmitOfForm(event:React.FormEvent<HTMLFormElement>):void {
         event.preventDefault();
@@ -32,7 +38,23 @@ export default function AddBlogDialogComponent({closeFunction, isOpened}:propsTy
         }
 
         if (document.querySelectorAll('[data-errored="true"]').length === 0) {
-            alert('succses')
+            document.body.classList.remove('overflow-hidden');
+            const today:Date = new Date();
+            const todayYear:Number = today.getFullYear();
+            const todayMonth:Number = today.getMonth();
+            const todayDate:Number = today.getDate();
+            // TODO:this block of codes has errors
+            const payloadToDispatch = {
+                content: textArea.value,
+                date: `${todayYear}/${todayDate}/${todayMonth}`,
+                img: 'https://bsmedia.business-standard.com/_media/bs/img/article/2020-11/06/full/1604653132-6606.jpg',
+                type: ['family','lazy']
+            }
+
+            dispatch(actionsOfAppSlice.createBlog(payloadToDispatch))
+            textArea.value = '';
+            typesHolder.textContent = '';
+            closeFunction();
         }
     }
 

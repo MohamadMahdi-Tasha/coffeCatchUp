@@ -22,7 +22,16 @@ const appSlice:Slice = createSlice({
         ]
     },
     reducers: {
+        createBlog(state, action):void {
+            const payload = action.payload;
 
+            state.blogs.push({
+                date: payload.date,
+                img: payload.img,
+                content: payload.current,
+                types: payload.types
+            })
+        },
     }
 })
 
