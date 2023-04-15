@@ -46,7 +46,7 @@ export default function ActivitiesDropDownComponent({placeHolder}:placeHolderTyp
                 ref={typesHolderRef}
                 type={'button'}
                 onClick={() => (isOpened) ? setOpened(false) : setOpened(true)}
-                className={`block peer data-[errored="true"]:border-red-600 data-[errored="true"]:bg-red-600/20 data-[errored="true"]:text-red-600 cursor-pointer border-2 ${(isOpened) ? 'border-indigo-300 dark:border-indigo-900': 'border-black/20 dark:border-white/20' } outline-0 ${(isOpened) ? 'bg-indigo-300 dark:bg-indigo-900': 'bg-black/20 dark:bg-white/20'} focus:bg-indigo-300 dark:focus:border-indigo-900 dark:focus:bg-indigo-900 focus:border-indigo-300 text-black/60 font-roboto w-full p-3 h-[62px] overflow-auto rounded-md mb-4 text-start font-normal text-sm my-transition flex flex-wrap gap-3`}
+                className={`block peer data-[errored="true"]:border-red-600 dark:text-white/20 data-[errored="true"]:bg-red-600/20 data-[errored="true"]:text-red-600 cursor-pointer border-2 ${(isOpened) ? 'border-indigo-300 dark:border-indigo-900': 'border-black/20 dark:border-white/20' } outline-0 ${(isOpened) ? 'bg-indigo-300 dark:bg-indigo-900': 'bg-black/20 dark:bg-white/20'} focus:bg-indigo-300 dark:focus:border-indigo-900 dark:focus:bg-indigo-900 focus:border-indigo-300 text-black/60 font-roboto w-full p-3 h-[62px] overflow-auto rounded-md mb-4 text-start font-normal text-sm my-transition flex flex-wrap gap-3`}
                 data-errored={false}
             >
                 {
