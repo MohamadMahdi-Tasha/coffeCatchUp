@@ -7,12 +7,13 @@ import ArticleItemImageComponent from './ArticleItemImageComponent';
 
 // Defining type of props
 interface articleItemPropsType {
+    img: string;
     date: string;
     types: string[];
 }
 
 // Exporting functional component as default
-export default function ArticleItemComponent({date, types}: articleItemPropsType){
+export default function ArticleItemComponent({img, date, types}: articleItemPropsType){
     // Variables
     const selectedDate:Date = new Date(date);
     const monthOfSelectedDate:number = selectedDate.getMonth();
@@ -49,7 +50,7 @@ export default function ArticleItemComponent({date, types}: articleItemPropsType
                             </div>
                         </div>
                     </div>
-                    <ArticleItemImageComponent />
+                    <ArticleItemImageComponent img={img} />
                 </article>
             </Link>
         </li>

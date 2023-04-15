@@ -20,7 +20,7 @@ export default function HomePage():JSX.Element{
             <div>
                 <h3 className={'text-black text-lg font-bold mb-3'}>Articles</h3>
                 <ul className={'home-page__articles-list'}>
-                    <ArticleItemComponent types={['productive', 'family', 'learned']} date={'2023/12/6'}/>
+                    <ArticleItemComponent img={'https://bsmedia.business-standard.com/_media/bs/img/article/2020-11/06/full/1604653132-6606.jpg'} types={['productive', 'family', 'learned']} date={'2023/12/6'}/>
                 </ul>
             </div>
         </ContainerComponent>
