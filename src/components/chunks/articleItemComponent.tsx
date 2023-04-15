@@ -32,15 +32,15 @@ export default function ArticleItemComponent({img, date, types}: articleItemProp
     // Returning JSX
     return(
         <li className={'home-page__articles-item'}>
-            <Link className={'block home-page__articles-link border-black/30'} to={`/blogs/${btoa(date)}`}>
+            <Link className={'block home-page__articles-link border-black/30 dark:border-white/30'} to={`/blogs/${btoa(date)}`}>
                 <article className={'py-5 flex md:flex-row flex-col-reverse md:items-center items-start gap-5 justify-between'}>
                     <div>
                         <MyProfileInArticleComponent date={date}/>
                         <div>
-                            <h1 className={'text-lg text-black font-semibold mb-2'}>
+                            <h1 className={'text-lg text-black dark:text-white font-semibold mb-2'}>
                                 {dayOfSelectedDate} Day Of {monthOfSelectedDate} Month In {season} Of {yearOfSelectedDate}
                             </h1>
-                            <p className={'font-light text-black/30 mb-4'}>Click To See Report Of This Day!</p>
+                            <p className={'font-light text-black/30 dark:text-white/30 mb-4'}>Click To See Report Of This Day!</p>
                             <div className={'flex flex-wrap md:gap-4 gap-2'}>
                                 {
                                     types.map((type:string, index:number) =>

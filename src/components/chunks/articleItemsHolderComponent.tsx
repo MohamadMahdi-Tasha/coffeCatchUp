@@ -13,8 +13,8 @@ export default function ArticleItemsHolderComponent():JSX.Element{
     if (blogs[0] === undefined) {
         return(
             <>
-                <h1 className={'text-center text-4xl font-bold mb-3'}>SORRY!</h1>
-                <h6 className={'text-center text-xl font-light text-black/40'}>But There Is Nothing To Show !</h6>
+                <h1 className={'text-center text-4xl font-bold text-black dark:text-white mb-3'}>SORRY!</h1>
+                <h6 className={'text-center text-xl font-light dark:text-white/40 text-black/40'}>But There Is Nothing To Show !</h6>
             </>
         )
     } else {

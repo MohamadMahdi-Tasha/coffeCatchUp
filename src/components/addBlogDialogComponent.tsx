@@ -61,11 +61,11 @@ export default function AddBlogDialogComponent({closeFunction, isOpened}:propsTy
     // Returning JSX
     return(
         <DialogComponent closeFunction={closeFunction} isOpened={isOpened}>
-            <h6 className={'font-semibold text-lg text-black mb-3'}>Want to add a report?</h6>
+            <h6 className={'font-semibold text-lg text-black dark:text-white mb-3'}>Want to add a report?</h6>
             <form onSubmit={handleSubmitOfForm} action="#">
                 <TextAreaComponent placeHolder={'Write your history here ...'}/>
                 <ActivitiesDropDownComponent placeHolder={'Select Activities ...'}/>
-                <button className={'w-full p-3 bg-black rounded-md text-white font-roboto font-semibold'}>Submit</button>
+                <button className={'w-full p-3 bg-black dark:bg-white/20 rounded-md dark:text-black text-white font-roboto font-semibold'}>Submit</button>
             </form>
         </DialogComponent>
     );

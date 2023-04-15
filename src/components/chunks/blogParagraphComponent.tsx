@@ -12,7 +12,7 @@ interface propsInteface {
 export default function BlogParagraphComponent({firstLetterBig, children}:propsInteface):JSX.Element{
     // Returning JSX
     return(
-        <p className={`${(firstLetterBig) ? 'first-letter:text-5xl first-letter:font-extrabold' : false} text-base text-black/70 font-normal`}>
+        <p className={`${(firstLetterBig) ? 'first-letter:text-5xl first-letter:font-extrabold' : false} text-base text-black/70 dark:text-white/70 font-normal`}>
             {children}
         </p>
     );

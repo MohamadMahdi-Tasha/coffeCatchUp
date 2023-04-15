@@ -14,9 +14,9 @@ export default function DialogComponent({isOpened, children, closeFunction}:open
     // Returning JSX
     return(
         <>
-            <div onClick={closeFunction} data-opened={isOpened} className={'z-10 fixed data-[opened="true"]:opacity-1 data-[opened="false"]:pointer-events-none data-[opened="false"]:opacity-0 left-0 top-0 w-full h-full bg-black/30 backdrop-blur-md my-transition'} />
-            <div data-opened={isOpened} className={'z-10 fixed overflow-auto data-[opened="true"]:visible data-[opened="false"]:invisible data-[opened="false"]:scale-[.98] data-[opened="true"]:scale-[1] data-[opened="true"]:opacity-1 data-[opened="false"]:opacity-0 top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] bg-white rounded-lg my-transition-short p-3 md:h-[50%] h-[95%] md:w-[50%] w-[95%]'}>
-                <button onClick={closeFunction} className={'w-8 h-8 flex items-center justify-center text-black hover:bg-black/30 transition-all mb-3 rounded-full'}><IconComponent type={'x'}/></button>
+            <div onClick={closeFunction} data-opened={isOpened} className={'z-10 fixed data-[opened="true"]:opacity-1 data-[opened="false"]:pointer-events-none data-[opened="false"]:opacity-0 left-0 top-0 w-full h-full bg-black/30 dark:bg-white/10 backdrop-blur-md my-transition'} />
+            <div data-opened={isOpened} className={'z-10 fixed overflow-auto data-[opened="true"]:visible data-[opened="false"]:invisible data-[opened="false"]:scale-[.98] data-[opened="true"]:scale-[1] data-[opened="true"]:opacity-1 data-[opened="false"]:opacity-0 top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] bg-white dark:bg-slate-900 rounded-lg my-transition-short p-3 md:h-[50%] h-[95%] md:w-[50%] w-[95%]'}>
+                <button onClick={closeFunction} className={'w-8 h-8 flex items-center justify-center text-black dark:text-white hover:bg-black/30 dark:hover:bg-white/30 transition-all mb-3 rounded-full'}><IconComponent type={'x'}/></button>
                 {children}
             </div>
         </>

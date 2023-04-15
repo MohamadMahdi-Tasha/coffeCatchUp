@@ -45,7 +45,7 @@ export default function BlogPage():JSX.Element{
                 <div className={'flex flex-wrap gap-3 mb-3'}>
                     {blogToGet.types.map((item:any, index:number) => <DaysTypeButtonWithoutSelectingComponent key={index} type={item} />)}
                 </div>
-                <h1 className={'text-4xl font-black mb-7'}>{dayOfSelectedDate} Day Of {monthOfSelectedDate} Month In {season} Of {yearOfSelectedDate}</h1>
+                <h1 className={'text-4xl font-black text-black dark:text-white mb-7'}>{dayOfSelectedDate} Day Of {monthOfSelectedDate} Month In {season} Of {yearOfSelectedDate}</h1>
                 <MyProfileInArticleComponent date={blogToGet.date}/>
                 <BlogPageImageComponent img={blogToGet.img} />
             </SectionComponent>
