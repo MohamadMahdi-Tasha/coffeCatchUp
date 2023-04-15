@@ -7,10 +7,6 @@ import DaysTypeButtonWithoutSelectingComponent from "../components/chunks/daysTy
 import MyProfileInArticleComponent from "../components/chunks/myProfileInArticleComponent";
 import BlogParagraphComponent from "../components/chunks/blogParagraphComponent";
 
-// encoding by 'btoa' function and decoding by 'atob'
-console.log(btoa('1'))
-console.log(atob('MQ=='))
-
 // Exporting functional component as default
 export default function BlogPage():JSX.Element{
     // Using 'useParams' Hook To Get Id Of Product From URL
