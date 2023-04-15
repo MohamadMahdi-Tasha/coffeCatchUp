@@ -4,6 +4,7 @@ import IconComponent from './chunks/iconComponent';
 import ArticleItemsInNavComponent from './chunks/articleItemsInNavComponent';
 import Logo from './../assets/img/img-logo.png';
 import { Link } from "react-router-dom";
+import {useSelector} from "react-redux";
 
 // Defining type of props
 interface types {
@@ -13,6 +14,11 @@ interface types {
 
 // Exporting functional component as default
 export default function LeftSideNavComponent({isOpened, closeFunction}:types):JSX.Element{
+    // Getting Redux State
+    const store:any = useSelector(state => state);
+    const blogs:object[] = store.blogs;
+    const lastTwoBlogs = [blogs[blogs.length - 2], blogs[blogs.length - 1]];
+
     // Returning JSX
     return(
         <>
@@ -31,8 +37,7 @@ export default function LeftSideNavComponent({isOpened, closeFunction}:types):JS
                 <div>
                     <h6 className={'m-3 text-black dark:text-white font-semibold text-lg'}>Latest Reports:</h6>
                     <ul className={'border-b border-b-black/20 dark:border-b-white/20'}>
-                        <ArticleItemsInNavComponent date={'2023/12/6'} img={'s'}/>
-                        <ArticleItemsInNavComponent date={'2023/12/6'} img={'s'}/>
+                        {lastTwoBlogs.map((item:any,index:number) => <ArticleItemsInNavComponent key={index} date={item.date} img={item.img}/> )}
                     </ul>
                 </div>
                 <div className={'p-3'}>
