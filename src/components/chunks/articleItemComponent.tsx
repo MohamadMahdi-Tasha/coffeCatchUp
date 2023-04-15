@@ -3,7 +3,7 @@
 import {Link} from "react-router-dom";
 import MyProfileInArticleComponent from "./myProfileInArticleComponent";
 import DaysTypeOfArticleComponent from "./daysTypeOfArticleComponent";
-import ArticleItemImageComponent from './ArticleItemImageComponent';
+import ArticleItemImageComponent from './articleItemImageComponent';
 
 // Defining type of props
 interface articleItemPropsType {

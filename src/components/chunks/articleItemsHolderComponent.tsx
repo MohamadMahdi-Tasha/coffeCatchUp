@@ -1,17 +1,27 @@
 // Codes By Mahdi Tasha
-// Defining Type Of Props
-interface childrenInterface {children?: React.ReactNode;}
+// Importing Part
+import { useSelector } from "react-redux";
+import ArticleItemComponent from "./articleItemComponent";
 
 // Exporting functional component as default
-export default function ArticleItemsHolderComponent({children}:childrenInterface):JSX.Element{
+export default function ArticleItemsHolderComponent():JSX.Element{
+    // Getting Redux State
+    const store:any = useSelector(state => state);
+    const blogs:object[] = store.blogs;
+
     // Conditional Rendering
-    if (children !== undefined) {return <ul className={'home-page__articles-list'}>{children}</ul>}
-    else {
+    if (blogs[0] === undefined) {
         return(
             <>
                 <h1 className={'text-center text-4xl font-bold mb-3'}>SORRY!</h1>
                 <h6 className={'text-center text-xl font-light text-black/40'}>But There Is Nothing To Show !</h6>
             </>
+        )
+    } else {
+        return (
+            <ul className={'home-page__articles-list'}>
+                {blogs.map((blog:any, index:number) => <ArticleItemComponent key={index} img={blog.img} date={blog.date} types={blog.types}/>)}
+            </ul>
         )
     }
 }
