@@ -5,6 +5,7 @@ import TextAreaComponent, {textAreaRef} from "./chunks/textAreaComponent";
 import DialogComponent from "./chunks/dialogComponent";
 import {actionsOfAppSlice} from "../store";
 import { useSelector, useDispatch} from "react-redux";
+import * as url from "url";
 
 // creating types for props
 interface propsType {
@@ -61,15 +62,14 @@ export default function AddBlogDialogComponent({closeFunction, isOpened}:propsTy
                 types: typeArray
             }))
 
-            textArea.value = '';
-            typesHolder.textContent = 'Select Activities ...';
-            closeFunction();
+            window.location.reload();
         }
     }
 
     // Returning JSX
     return(
         <DialogComponent closeFunction={closeFunction} isOpened={isOpened}>
+            <h6 className={'font-semibold text-xs text-black dark:text-white mb-3'}>Note that this dialog is for playing with reduxs-state. it wont work</h6>
             <h6 className={'font-semibold text-lg text-black dark:text-white mb-3'}>Want to add a report?</h6>
             <form onSubmit={handleSubmitOfForm} action="#">
                 <TextAreaComponent placeHolder={'Write your history here ...'}/>
