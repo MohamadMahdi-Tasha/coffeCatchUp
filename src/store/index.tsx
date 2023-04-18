@@ -27,7 +27,6 @@ const appSlice:Slice = createSlice({
             }
         ]
     },
-    // TODO:STILL HAS ISSUES
     reducers: {
         createBlog(state, action):void {
             const payload = action.payload;
@@ -35,7 +34,7 @@ const appSlice:Slice = createSlice({
             state.blogs.push({
                 date: payload.date,
                 img: payload.img,
-                content: payload.current,
+                content: payload.content,
                 types: payload.types
             })
         },

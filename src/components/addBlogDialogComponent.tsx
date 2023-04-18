@@ -25,35 +25,44 @@ export default function AddBlogDialogComponent({closeFunction, isOpened}:propsTy
         const typesHolder:any = typesHolderRef.current;
         const textArea:any = textAreaRef.current;
 
-        if (typesHolder.textContent === 'Select Activities ...') {
-            typesHolder.setAttribute('data-errored', 'true');
-        } else {
-            typesHolder.setAttribute('data-errored', 'false');
-        }
+        if (typesHolder.textContent === 'Select Activities ...') {typesHolder.setAttribute('data-errored', 'true');}
+        else {typesHolder.setAttribute('data-errored', 'false');}
 
-        if (textArea.value.startsWith(" ") || textArea.value === ""){
-            textArea.setAttribute('data-errored', 'true');
-        } else {
-            textArea.setAttribute('data-errored', 'false');
-        }
+        if (textArea.value.startsWith(" ") || textArea.value === ""){textArea.setAttribute('data-errored', 'true');}
+        else {textArea.setAttribute('data-errored', 'false');}
 
         if (document.querySelectorAll('[data-errored="true"]').length === 0) {
-            document.body.classList.remove('overflow-hidden');
+            let typeArray:string[] = [];
             const today:Date = new Date();
             const todayYear:Number = today.getFullYear();
-            const todayMonth:Number = today.getMonth();
+            const todayMonth:Number = today.getMonth() + 1;
             const todayDate:Number = today.getDate();
-            // TODO:this block of codes has errors
-            const payloadToDispatch = {
-                content: textArea.value,
-                date: `${todayYear}/${todayDate}/${todayMonth}`,
-                img: 'https://bsmedia.business-standard.com/_media/bs/img/article/2020-11/06/full/1604653132-6606.jpg',
-                type: ['family','lazy']
-            }
 
-            dispatch(actionsOfAppSlice.createBlog(payloadToDispatch))
+            document.body.classList.remove('overflow-hidden');
+            Array.from(typesHolder.children).forEach((element:any) => {
+                const elementsTextContent = element.textContent;
+                let typeName:string = '';
+
+                switch (elementsTextContent){
+                    case "Lazy" : typeName = 'lazy';break;
+                    case "Productive" : typeName = 'productive';break;
+                    case "Learn From It" : typeName = 'learned';break;
+                    case "Vacation" : typeName = 'vacation';break;
+                    case "With Family" : typeName = 'family';break;
+                }
+
+                typeArray.push(typeName)
+            });
+
+            dispatch(actionsOfAppSlice.createBlog({
+                date: `${todayYear}/${todayMonth}/${todayDate}`,
+                img: 'https://bsmedia.business-standard.com/_media/bs/img/article/2020-11/06/full/1604653132-6606.jpg',
+                content: textArea.value,
+                types: typeArray
+            }))
+
             textArea.value = '';
-            typesHolder.textContent = '';
+            typesHolder.textContent = 'Select Activities ...';
             closeFunction();
         }
     }
