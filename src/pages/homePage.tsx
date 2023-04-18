@@ -20,6 +20,7 @@ export default function HomePage():JSX.Element{
                 <DaysTypeButtonComponent onClick={() => setFilterMethod('learned')} type='learned' />
                 <DaysTypeButtonComponent onClick={() => setFilterMethod('vacation')} type='vacation' />
                 <DaysTypeButtonComponent onClick={() => setFilterMethod('family')} type='family' />
+                <DaysTypeButtonComponent onClick={() => setFilterMethod('date')} type='date' />
             </div>
             <div>
                 <h3 className={'text-black dark:text-white text-lg font-bold mb-3'}>Articles</h3>

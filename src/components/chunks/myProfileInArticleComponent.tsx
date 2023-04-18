@@ -23,7 +23,7 @@ export default function MyProfileInArticleComponent({date}:myProfileInArticleCom
                 <div className={'md:flex block items-center md:mb-0 mb-2'}>
                     <h6 className={'font-bold text-black dark:text-white text-sm'}>Mahdi Tasha</h6>
                     <h6 className={'mx-2 font-light text-black/50 dark:text-white/50 md:block hidden'}>.</h6>
-                    <h6 className={'text-black/50 dark:text-white/50 font-light text-sm'}><time dateTime={date}>{yearOfSelectedDate}/{dayOfSelectedDate}/{monthOfSelectedDate}</time></h6>
+                    <h6 className={'text-black/50 dark:text-white/50 font-light text-sm'}><time dateTime={date}>{yearOfSelectedDate}/{(dayOfSelectedDate.toString().length === 1) ? `0${dayOfSelectedDate}` : dayOfSelectedDate}/{(monthOfSelectedDate.toString().length === 1) ? `0${monthOfSelectedDate}` : monthOfSelectedDate}</time></h6>
                 </div>
                 <h6 className={'text-sm text-black/50 dark:text-white/50 font-light'}>{(yearOfSelectedDate - 2022 > 5) ? 'Senior' : 'Junior'} Front End Dev</h6>
             </div>

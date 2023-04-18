@@ -5,6 +5,7 @@ import ArticleItemsInNavComponent from './chunks/articleItemsInNavComponent';
 import Logo from './../assets/img/img-logo.png';
 import { Link } from "react-router-dom";
 import {useSelector} from "react-redux";
+import React from "react";
 
 // Defining type of props
 interface types {
@@ -48,7 +49,20 @@ export default function LeftSideNavComponent({isOpened, closeFunction}:types):JS
                 </div>
                 <div className={'p-3'}>
                     <h6 className={'text-black dark:text-white font-semibold text-lg block mb-3'}>Find Reports On Date :</h6>
-                    <input className={'w-full bg-transparent border cursor-pointer border-black/20 dark:border-white/20 p-3 rounded-md text-black dark:text-white hover:bg-black/20 transition-all'} type="date"/>
+                    <input onChange={(event:React.ChangeEvent):void => {
+                        const targetElement:any = event.target;
+                        const valueOfInput:string = targetElement.value;
+                        const changedValueOfInput:string = valueOfInput.replaceAll('-','/');
+                        const dateOfValueOfInput:Date = new Date(changedValueOfInput);
+                        const yearOfValueOfInput = dateOfValueOfInput.getFullYear();
+                        const dayOfValueOfInput = dateOfValueOfInput.getDate();
+                        const monthOfValueOfInput = dateOfValueOfInput.getMonth() + 1;
+                        const correctDate = `${yearOfValueOfInput}/${monthOfValueOfInput}/${dayOfValueOfInput}`;
+                        const createdLinkElement = document.createElement('a');
+
+                        createdLinkElement.setAttribute('href', `/blogs/${btoa(correctDate)}`);
+                        createdLinkElement.click();
+                    }} className={'w-full bg-transparent border cursor-pointer border-black/20 dark:border-white/20 p-3 rounded-md text-black dark:text-white hover:bg-black/20 transition-all'} type="date"/>
                 </div>
             </nav>
         </>
