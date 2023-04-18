@@ -11,16 +11,19 @@ import BlogPageImageComponent from './../components/chunks/blogPageImageComponen
 import {Link} from "react-router-dom";
 
 // Exporting functional component as default
-export default function BlogPage():JSX.Element{
+export default function BlogPage():any{
     // Using 'useParams' Hook To Get Id Of Product From URL
     const { encodedDate } = useParams();
 
     // getting encoded value of url
     const decodedDate= atob(String(encodedDate));
 
-    // Conditional Rendering
-    if (isNaN(Date.parse(decodedDate))) {
-        // returning jsx
+    // Getting Redux State
+    const store:any = useSelector(state => state);
+    const blogs:object[] = store.blogs;
+    const blogToGet:any = blogs.find((obj:any) => obj.date === decodedDate)
+
+    if (blogToGet === undefined) {
         return (
             <ContainerComponent className={'mt-20 p-3'}>
                 <SectionComponent>
@@ -35,12 +38,6 @@ export default function BlogPage():JSX.Element{
             </ContainerComponent>
         );
     } else {
-        // Getting Redux State
-        const store:any = useSelector(state => state);
-        const blogs:object[] = store.blogs;
-        // @ts-ignore
-        const blogToGet:any = blogs.find(obj => obj.date === decodedDate)
-
         // variables
         const selectedDate:Date = new Date(blogToGet.date);
         const monthOfSelectedDate:number = selectedDate.getMonth();
